@@ -1,0 +1,45 @@
+.ap_accordion {
+	list-style: none;
+	margin: 3% 0;
+	padding: 0;
+	height: 90%;
+	overflow: hidden;
+	background: #7d8d96;
+	}
+
+.ap_accordion li {
+	float: left;
+	border-left:
+	display: block;
+	height: 90%;
+	max-height: 90%;
+	width: 70%;
+	max-width: 70%;
+	padding: 5px 0;
+	overflow: hidden;
+	color: #fff;
+	text-decoration: none;
+	font-size: 16px;
+	line-height: 1.5em;
+	border-left: 0.5px solid #fff;
+}
+
+.ap_banner{
+	height: 100%;
+}
+
+.ap_description {
+    background-color: #000000;
+    margin-left: 10%;
+    position: relative;
+    top: -19%;
+    width: 50%;
+}
+
+.ap_title{
+  -ms-transform:rotate(270deg); /* IE 9 */
+  -moz-transform:rotate(270deg); /* Firefox */
+  -webkit-transform:rotate(270deg); /* Safari and Chrome */
+  -o-transform:rotate(270deg); /* Opera */	
+  top: 100%;
+}

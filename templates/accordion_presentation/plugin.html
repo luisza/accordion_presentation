@@ -1,0 +1,25 @@
+
+
+
+<li id="{{instance.pk}}" class="accordion_presentation" >
+   <div class="grid grid-pad" style="padding-left: 2px !important;">
+	    <div class="col-2-12 ap_banner" style="background-color: {{instance.color}}" >
+		    <div class="content">
+		    	  <img src="{{instance.icon.url}}" class="ap_icon"/>
+	  			  <p class="ap_title"> {{instance.title}}</p>
+		    </div>
+	    </div>
+	    <div class="col-10-12">
+		    <div class="content">
+		    		{% if instance.page_link %}<a href="{{instance.page_link.get_absolute_url }}">  {%endif%}
+					<img src="{{instance.photo.url}}" />
+					<p class="ap_description"> {{instance.short_description}} </p>
+					{% if instance.page_link %}</a>{%endif%}
+		    </div>
+	    </div>
+    </div>
+
+</li>
+
+
+
