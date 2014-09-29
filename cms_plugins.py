@@ -5,12 +5,12 @@ from django.utils.translation import ugettext as _
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 
-from .models import  PresentationModel, Accordion
+from .models import  PresentationModel, PresentationAccordion
 
 
 
 class AccordionPlugin(CMSPluginBase):
-    model = Accordion
+    model = PresentationAccordion
     name = _('Accordion presentation')
     #module = _('Accordion')
     render_template = 'accordion_presentation/accordion.html'

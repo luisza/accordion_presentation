@@ -6,7 +6,7 @@ from django.utils.encoding import python_2_unicode_compatible
 
 
 @python_2_unicode_compatible
-class Accordion(CMSPlugin):
+class PresentationAccordion(CMSPlugin):
     custom_classes = models.CharField(_('custom classes'), max_length=200, blank=True)
     
     def __str__(self):
