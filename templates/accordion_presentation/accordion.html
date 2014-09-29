@@ -1,42 +1,17 @@
-{% load i18n static cms_tags menu_tags sekizai_tags  proportion %}
+{% load i18n static cms_tags menu_tags sekizai_tags  %}
 
 {%addtoblock "js" %} <script src="{% static 'cms/js/libs/jquery.min.js' %}"> </script> {%endaddtoblock%}
 {% addtoblock "js" %}
 <script>
-
-  if($ == undefined){
-    JQ = CMS.$;
-  }else{
-     JQ = $;
-    }
- (function($) {
- 	$(document).ready(function(){
- 
-    activeItem = $("#accordion-{{ accordion.pk }} li:first");
-    $(activeItem).addClass('active');
- 
-    $("#accordion-{{ accordion.pk }} li").hover(function(){
-    	
-        $(activeItem).animate({width: "{{device_info.width|proportion_resize:7 }}px"}, {duration:400, queue:false});
-        $(this).animate({width: "{{device_info.width|proportion_resize:80}}px"}, {duration:400, queue:false});
-        activeItem = this;
-    });
-    	$("#accordion-{{ accordion.pk }} li").each(function(key, value){
-    		$(value).attr('style', "width: {{device_info.width|proportion_resize:7 }}px; overflow: hidden;");
-    	});
- 		$("#accordion-{{ accordion.pk }} li:first").animate(
- 			{width: "{{device_info.width|proportion_resize:80 }}px"}, {duration:400, queue:false});
- 	});
-})(JQ);
-
+{% include 'accordion_presentation/js_blind.js'%}
 </script>
 {% endaddtoblock "js" %}
 
-{{device_info}}
+{# we can use this {{device_info}} #}
 {%addtoblock "css" %}<link href="{% static 'css/accordion_presentation.css' %}" rel="stylesheet">{%endaddtoblock "css"%}
 {%addtoblock "css" %}<link href="{% static 'css/simplegrid.css' %}" rel="stylesheet">{%endaddtoblock "css"%}
 
-<ul class="ap_accordion" id="accordion-{{ accordion.pk }}">
+<ul class="ap_accordion {{accordion.custom_classes}}" id="accordion-{{ accordion.pk }}">
     {% for plugin in accordion.child_plugin_instances %}
 		{% with forloop as parentloop %}{% render_plugin plugin %}{% endwith %}
     {% endfor %}

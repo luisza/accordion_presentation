@@ -8,6 +8,12 @@ from django.utils.encoding import python_2_unicode_compatible
 @python_2_unicode_compatible
 class PresentationAccordion(CMSPlugin):
     custom_classes = models.CharField(_('custom classes'), max_length=200, blank=True)
+    custom_min_width = models.IntegerField(_('custom minimum width'), null=True, blank=True,
+                                           help_text=_("Size for closed accordion, if not set default is 7% of the device screen"))
+    custom_max_width = models.IntegerField(_('custom maximum width'), null=True, blank=True,
+                                           help_text=_("Size for open accordion, if not set default is 80% of the device screen"))
+    custom_duration = models.IntegerField(_('custom duration in milliseconds'), null=True, blank=True,
+                                           help_text=_("Jquery Animation duration in milliseconds, if not set default is 300"))
     
     def __str__(self):
         return _("%s columns") % self.cmsplugin_set.all().count()
