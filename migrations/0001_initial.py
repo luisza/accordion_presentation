@@ -8,6 +8,13 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
+        # Adding model 'PresentationAccordion'
+        db.create_table(u'accordion_presentation_presentationaccordion', (
+            (u'cmsplugin_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['cms.CMSPlugin'], unique=True, primary_key=True)),
+            ('custom_classes', self.gf('django.db.models.fields.CharField')(max_length=200, blank=True)),
+        ))
+        db.send_create_signal(u'accordion_presentation', ['PresentationAccordion'])
+
         # Adding model 'PresentationModel'
         db.create_table(u'accordion_presentation_presentationmodel', (
             (u'cmsplugin_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['cms.CMSPlugin'], unique=True, primary_key=True)),
@@ -22,11 +29,19 @@ class Migration(SchemaMigration):
 
 
     def backwards(self, orm):
+        # Deleting model 'PresentationAccordion'
+        db.delete_table(u'accordion_presentation_presentationaccordion')
+
         # Deleting model 'PresentationModel'
         db.delete_table(u'accordion_presentation_presentationmodel')
 
 
     models = {
+        u'accordion_presentation.presentationaccordion': {
+            'Meta': {'object_name': 'PresentationAccordion', '_ormbases': ['cms.CMSPlugin']},
+            u'cmsplugin_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['cms.CMSPlugin']", 'unique': 'True', 'primary_key': 'True'}),
+            'custom_classes': ('django.db.models.fields.CharField', [], {'max_length': '200', 'blank': 'True'})
+        },
         u'accordion_presentation.presentationmodel': {
             'Meta': {'object_name': 'PresentationModel', '_ormbases': ['cms.CMSPlugin']},
             u'cmsplugin_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['cms.CMSPlugin']", 'unique': 'True', 'primary_key': 'True'}),

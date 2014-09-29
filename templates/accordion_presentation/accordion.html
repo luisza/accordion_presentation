@@ -1,7 +1,6 @@
 {% load i18n static cms_tags menu_tags sekizai_tags  proportion %}
 
 {%addtoblock "js" %} <script src="{% static 'cms/js/libs/jquery.min.js' %}"> </script> {%endaddtoblock%}
-{%addtoblock "js" %} <script src="{% static 'responsive/js/responsive.js' %}"> </script> {%endaddtoblock%}
 {% addtoblock "js" %}
 <script>
 
@@ -17,17 +16,16 @@
     $(activeItem).addClass('active');
  
     $("#accordion-{{ accordion.pk }} li").hover(function(){
-        $(activeItem).animate({width: "{{device_info.width|proportion_resize:5 }}px"}, {duration:300, queue:false});
-        $(this).animate({width: "{{device_info.width}}px"}, {duration:300, queue:false});
+    	
+        $(activeItem).animate({width: "{{device_info.width|proportion_resize:7 }}px"}, {duration:400, queue:false});
+        $(this).animate({width: "{{device_info.width|proportion_resize:80}}px"}, {duration:400, queue:false});
         activeItem = this;
     });
     	$("#accordion-{{ accordion.pk }} li").each(function(key, value){
-    		console.log($(value));
-    		console.log(key);
-    		$(value).attr('style', "width: {{device_info.width|proportion_resize:5 }}px; overflow: hidden;");
+    		$(value).attr('style', "width: {{device_info.width|proportion_resize:7 }}px; overflow: hidden;");
     	});
  		$("#accordion-{{ accordion.pk }} li:first").animate(
- 			{width: "{{device_info.width}}px"}, {duration:300, queue:false});
+ 			{width: "{{device_info.width|proportion_resize:80 }}px"}, {duration:400, queue:false});
  	});
 })(JQ);
 
