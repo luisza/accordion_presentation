@@ -1,0 +1,32 @@
+.ap_icon_vertical{
+	max-height: 40%;
+	display:block;
+	text-align: center;	
+	overflow: hidden;
+}
+
+.ap_title_vertical{
+  -ms-transform:rotate(270deg); /* IE 9 */
+  -moz-transform:rotate(270deg) translate(-50%, -10%); /* Firefox */
+  -webkit-transform:rotate(270deg); /* Safari and Chrome */
+  -o-transform:rotate(270deg); /* Opera */	
+  font-size: 3em;
+  color: #FFFFFF;
+  max-height: 59%;
+  margin-top: 35%;
+}
+
+.ap_icon_horizontal{
+	width: 100%;
+	text-align: center;
+	overflow: hidden;
+}
+
+.ap_title_horizontal{
+	margin-top: 0;
+	padding-top:30%;
+	padding-bottom: 10%;
+    font-size: 3em;
+    color: #FFFFFF;
+	text-align: center;
+}
