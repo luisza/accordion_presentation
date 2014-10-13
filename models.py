@@ -3,7 +3,7 @@ from cms.models import CMSPlugin, Page
 from django.utils.translation import ugettext_lazy as _
 
 from django.utils.encoding import python_2_unicode_compatible
-
+from paintstore.fields import ColorPickerField
 
 @python_2_unicode_compatible
 class PresentationAccordion(CMSPlugin):
@@ -27,13 +27,27 @@ class PresentationModel(CMSPlugin):
     icon = models.ImageField(upload_to='icons')
     photo = models.ImageField(upload_to='photos')
     
-    color = models.CharField(max_length=8)
+    color = ColorPickerField()
     
     page_link = models.ForeignKey(Page, verbose_name=_("page"), 
         help_text=_("If present image will be clickable"), blank=True,
         null=True, limit_choices_to={'publisher_is_draft': True})
+       
+    search_fields = ('short_description',)
+
+    def __str__(self):
+         return self.title
+
+@python_2_unicode_compatible     
+class FieldPresentation(CMSPlugin):
+    title = models.CharField(max_length=255)
+    icon = models.ImageField(upload_to='icons')
+    color = ColorPickerField()
+    align = models.CharField(max_length=1, default='h',
+                              choices=(('v', _('Vertical')), ('h', _('Horizontal')) ) 
+                             )    
+    
+    search_fields = ('title',)
     
     def __str__(self):
         return self.title
-    
-    search_fields = ('short_description',)

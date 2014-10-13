@@ -1,0 +1,71 @@
+
+<style>
+.ap_field {
+	background-color: {{instance.color}};
+	display: block;
+	height: 100%;
+}
+
+.ap_icon_vertical{
+	max-height: 40%;
+	display:block;
+	text-align: center;	
+	overflow: hidden;
+}
+
+.ap_title_vertical{
+  -ms-transform:rotate(270deg); /* IE 9 */
+  -moz-transform:rotate(270deg) translate(-50%, -10%); /* Firefox */
+  -webkit-transform:rotate(270deg); /* Safari and Chrome */
+  -o-transform:rotate(270deg); /* Opera */	
+  font-size: 3em;
+  color: #FFFFFF;
+  max-height: 59%;
+  margin-top: 35%;
+}
+
+.ap_icon_horizontal{
+	width: 100%;
+	text-align: center;
+	overflow: hidden;
+}
+
+.ap_title_horizontal{
+	margin-top: 0;
+	padding-top:30%;
+	padding-bottom: 10%;
+    font-size: 3em;
+    color: #FFFFFF;
+	text-align: center;
+}
+
+</style>
+
+<div id="ins_{{ instance.pk}}" class="ap_field">
+    	{%if instance.align == 'v'%}
+    	 <div class="ap_icon_vertical">
+    	 	<img src="{{instance.icon.url}}"/>
+    	 </div>
+		  <p class="ap_title_vertical"> {{instance.title}}</p>
+		  {%else%}
+		  <p class="ap_title_horizontal"> {{instance.title}}</p>		
+    	 <div class="ap_icon_horizontal">
+    	 	<img src="{{instance.icon.url}}" />
+    	 </div>
+		  {%endif%}
+</div>
+
+
+<script>
+$(window).load(function() {
+	var c = $('#ins_{{ instance.pk}}').closest('.clearfix');
+	$('#ins_{{ instance.pk}}').closest('.column').css({padding: '0px'});
+	$('#ins_{{ instance.pk}}').closest('.column').css({height: c.height()}); 
+});
+
+$(window).on('resize',function() {
+	var c = $('#ins_{{ instance.pk}}').closest('.clearfix');
+	$('#ins_{{ instance.pk}}').closest('.column').css({padding: '0px'});
+	$('#ins_{{ instance.pk}}').css({height: c.height()}); 
+});
+</script>

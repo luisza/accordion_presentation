@@ -5,7 +5,7 @@ from django.utils.translation import ugettext as _
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 
-from .models import  PresentationModel, PresentationAccordion
+from .models import  PresentationModel, PresentationAccordion, FieldPresentation
 
 
 
@@ -34,5 +34,14 @@ class PresentationPlugin(CMSPluginBase):
                         'placeholder': placeholder,})
         return context
 
+
+class FieldPlugin(CMSPluginBase):
+    model = FieldPresentation
+    name = _('Field accordion presentation')
+    render_template = 'accordion_presentation/field.html'
+    allow_children = False
+    
+
 plugin_pool.register_plugin(AccordionPlugin)
 plugin_pool.register_plugin(PresentationPlugin) # register the plugin
+plugin_pool.register_plugin(FieldPlugin)

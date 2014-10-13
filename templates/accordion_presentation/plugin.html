@@ -1,26 +1,34 @@
+{% load sekizai_tags  proportion %}
 
 
+{% if step == 1%}
+<a href="{%if instance.page_link%}{{instance.page_link.get_absolute_url}} {%else%}#{%endif%}">
+ <img class="ap_img" src="{{instance.photo.url}}"
+ width="{{device_info.width|proportion_resize:60}}px"
+ height="{{device_info.height|proportion_resize:54}}px"
+  />	
+</a>
+{%else%}
 
-<li id="{{instance.pk}}" class="accordion_presentation" >
-   <div class="grid grid-pad" style="padding-left: 2px !important;">
-	    <div class="col-2-12 ap_banner" style="background-color: {{instance.color}}" >
-		    <div class="content">
-		    	 <div class="ap_icon">
-		    	 	<img src="{{instance.icon.url}}" class="ap_icon"/>
-		    	 </div>
-		    	  
-	  			  <p class="ap_title"> {{instance.title}}</p>
-		    </div>
-	    </div>
-	    <div class="col-10-12 ap_content">
-		    		{% if instance.page_link %}<a href="{{instance.page_link.get_absolute_url }}">  {%endif%}
-					<img class="ap_img" src="{{instance.photo.url}}" />
-					<p class="ap_description"> {{instance.short_description}} </p>
-					{% if instance.page_link %}</a>{%endif%}
-	    </div>
-    </div>
+ <div class="grid_1 borde_w ap_plug" id="m_{{instance.pk}}"  style="background-color: {{instance.color}};">
+ 	
+ 	<div class="ap_col ap_icon">
+ 		<img src="{{instance.icon.url}}" >
+ 	</div>
+ 	
+ 	<div > 
+ 		<h3 class="ap_title"> {{instance.title}} </h3>
+ 	</div>
+</div>
 
-</li>
+{%addtoblock "js" %} <script>
 
 
-
+$("#m_{{instance.pk}}").hover(
+	function (){
+		$('.cycle-slideshow').cycle('goto', {{forloop.counter0}});
+		$('.cycle-slideshow').insertAfter(this); 
+	}); 
+	
+ </script> {%endaddtoblock%}
+{%endif%}

@@ -1,18 +1,61 @@
 {% load i18n static cms_tags menu_tags sekizai_tags  %}
 
-{%addtoblock "js" %} <script src="{% static 'cms/js/libs/jquery.min.js' %}"> </script> {%endaddtoblock%}
-{% addtoblock "js" %}
-<script>
-{% include 'accordion_presentation/js_blind.js'%}
-</script>
-{% endaddtoblock "js" %}
+{% if not request.toolbar.edit_mode %}
+	{%addtoblock "js" %} <script src="{% static 'cms/js/libs/jquery.min.js' %}"> </script> {%endaddtoblock%}
+{%endif%}
 
-{# we can use this {{device_info}} #}
+{%addtoblock "js" %} <script src="{% static 'js/jquery.cycle2.min.js' %}"> </script> {%endaddtoblock%}
+
 {%addtoblock "css" %}<link href="{% static 'css/accordion_presentation.css' %}" rel="stylesheet">{%endaddtoblock "css"%}
-{%addtoblock "css" %}<link href="{% static 'css/simplegrid.css' %}" rel="stylesheet">{%endaddtoblock "css"%}
 
-<ul class="ap_accordion {{accordion.custom_classes}}" id="accordion-{{ accordion.pk }}">
-    {% for plugin in accordion.child_plugin_instances %}
-		{% with forloop as parentloop %}{% render_plugin plugin %}{% endwith %}
-    {% endfor %}
-</ul>
+<div class="ap_content {{accordion.custom_classes}}" >
+	<div class="container container_12">
+		<div class="cycle-slideshow grid_8" 
+		    {#data-cycle-fx="scrollHorz" #}
+		    data-cycle-fx="tileBlind"
+		    data-cycle-timeout=0
+		    data-cycle-auto-height="16:9"
+		    {% if request.toolbar.edit_mode %}
+		    data-cycle-slides="> div"
+		    {%else%}
+		    data-cycle-slides="> a"
+		    {%endif%}
+		    {% if accordion.custom_duration%}
+		    manual-speed={{accordion.custom_duration}}
+		    {%endif%}
+		    >
+			{%with 1 as step %}
+			    {% for plugin in accordion.child_plugin_instances %}
+					{% with forloop as parentloop %}{% render_plugin plugin %}{% endwith %}
+			    {% endfor %} 
+			
+			{% endwith %}
+		</div>
+	
+			{%with 2 as step %}
+			    {% for plugin in accordion.child_plugin_instances %}
+					{% with forloop as parentloop %}{% render_plugin plugin %}{% endwith %}
+			    {% endfor %} 
+			
+			{% endwith %}
+	
+	</div>
+</div>
+
+{%addtoblock "js" %} 
+<script>
+$('.cycle-slideshow' ).on( 'cycle-update-view', function(event, optionHash, slideOptionsHash, currentSlideEl) {
+	$('.ap_plug').css({height: $( '.cycle-slideshow img' ).height()});
+	$('.cycle-slideshow').css({height: $( '.cycle-slideshow img' ).height()});
+});
+
+$( ".cycle-slideshow" ).resize(function() {
+	$(".cycle-slideshow").css({height: $( '.cycle-slideshow img' ).height()});
+	$('.cycle-slideshow').css({height: $( '.cycle-slideshow img' ).height()});
+	
+});
+</script>
+{%endaddtoblock%}
+{%addtoblock "css" %} 
+	<style>body{background: #000000;}</style>
+{%endaddtoblock%}
