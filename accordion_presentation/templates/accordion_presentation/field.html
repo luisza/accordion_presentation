@@ -1,6 +1,8 @@
 {% load i18n static cms_tags menu_tags sekizai_tags  %}
 
 {%addtoblock "css" %}<link href="{% static 'accordion_presentation/css/Field.css' %}" rel="stylesheet">{%endaddtoblock "css"%}
+{%addtoblock "css" %}<link href="{{ STATIC_URL }}accordion_presentation/css/fluid_grid.css" rel="stylesheet">{%endaddtoblock "css"%}
+
 
 {%addtoblock "css" %}
 <style>
