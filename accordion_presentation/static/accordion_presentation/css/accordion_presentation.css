@@ -1,20 +1,33 @@
 
-.ap_title{
+.ap_width .ap_title{
   -ms-transform:rotate(270deg); /* IE 9 */
   -moz-transform:rotate(270deg); /* Firefox */
   -webkit-transform:rotate(270deg); /* Safari and Chrome */
   -o-transform:rotate(270deg); /* Opera */	
-  margin-top: 100%;
+   margin-top: 75%;
   color: #FFFFFF;
-  padding: 0px 50px;
   font-size:30px;
   /*height: 90px; */
 
 }
 
-.ap_icon {
-    margin: 35% 0% 39% 0%;
-    max-height: 40%;
+.ap_width .ap_icon {
+    margin: 10% 0;
+    max-height: 30%;
+    text-align: center;
+    overflow: hidden;
+    height: 130px;
+}
+.ap_height .ap_title{
+    color: #FFFFFF;
+    float: left;
+    font-size: 1.5em;
+    margin: 20% 3%;
+
+}
+
+.ap_height .ap_icon {
+    overflow: hidden;
     text-align: center;
 }
 
@@ -23,9 +36,7 @@
 	/*max-width: 1362px!important;*/
 }
 
-.ap_col {
-	height: 200px;
-}
+
 
 .ap_presentation {
 
@@ -35,4 +46,21 @@
 .ap_content {
  	background-color: #000;
  	height: 90%;
+}
+
+
+.ap_width .ap_plug{
+	float:left;
+}
+
+.ap_height .ap_plug{
+	display: table-cell;
+}
+
+.ap_width  .ap_slide{
+	float:left;
+}
+
+.ap_height  .ap_slide{
+	float:table-cell;
 }

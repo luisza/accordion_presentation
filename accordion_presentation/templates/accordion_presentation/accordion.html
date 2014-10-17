@@ -7,11 +7,13 @@
 {%addtoblock "js" %} <script src="{% static 'accordion_presentation/js/jquery.cycle2.min.js' %}"> </script> {%endaddtoblock%}
 
 {%addtoblock "css" %}<link href="{% static 'accordion_presentation/css/accordion_presentation.css' %}" rel="stylesheet">{%endaddtoblock "css"%}
-{%addtoblock "css" %}<link href="{{ STATIC_URL }}accordion_presentation/css/fluid_grid.css" rel="stylesheet">{%endaddtoblock "css"%}
+
+{%addtoblock "js" %}<script src="{{ STATIC_URL }}accordion_presentation/js/accordion.js" > </script>{%endaddtoblock "js"%}
+
 		
-<div class="ap_content {{accordion.custom_classes}}" >
-	<div class="container container_12">
-		<div class="cycle-slideshow grid_8" 
+<div class="ap_content {{accordion.custom_classes}}" data-maxcol="{{ accordion.child_plugin_instances|length }}" >
+
+		<div class="cycle-slideshow ap_slide"  
 		    {#data-cycle-fx="scrollHorz" #}
 		    data-cycle-fx="tileBlind"
 		    data-cycle-timeout=0
@@ -40,20 +42,15 @@
 			
 			{% endwith %}
 	
-	</div>
+
 </div>
 
 {%addtoblock "js" %} 
 <script>
-$('.cycle-slideshow' ).on( 'cycle-update-view', function(event, optionHash, slideOptionsHash, currentSlideEl) {
-	$('.ap_plug').css({height: $( '.cycle-slideshow img' ).height()});
-	$('.cycle-slideshow').css({height: $( '.cycle-slideshow img' ).height()});
-});
 
-$( ".cycle-slideshow" ).resize(function() {
-	$(".cycle-slideshow").css({height: $( '.cycle-slideshow img' ).height()});
-	$('.cycle-slideshow').css({height: $( '.cycle-slideshow img' ).height()});
-	
+resize_image($('.ap_content')[0]);
+$( window ).resize(function() {
+	resize_image($('.ap_content')[0]);
 });
 </script>
 {%endaddtoblock%}
