@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 setup(
     name='accordion_presentation',
-    version='0.2.2',
+    version='0.2.3',
     description='It is a simple horizontal accordion for django cms',
     long_description=open('README.rst').read(),
     author='Luisza',
