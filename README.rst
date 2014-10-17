@@ -6,32 +6,21 @@ It is a simple horizontal accordion for django cms
 
 Installation
 -----------------------
+Install from pypi 
 
-Not pypi version yet, clone de repository 
+	$ pip install accordion_presentation
 
-    $ git clone https://github.com/luisza/accordion_presentation.git
+or clone from with git 
 
-Please read https://github.com/mlavin/django-responsive
+	$ git clone https://github.com/luisza/accordion_presentation.git
+	$ cd accordion_presentation
+	$ python setup.py install
 
 And put in your apps
 
     INSTALLED_APPS = (
         ...
         'accordion_presentation',
-    )
-
-Put in middleware 
-
-    MIDDLEWARE_CLASSES = (
-        ...
-        'responsive.middleware.DeviceInfoMiddleware',
-    )
-
-Put in template context processors:
-
-    TEMPLATE_CONTEXT_PROCESSORS = (
-        ...,
-         'responsive.context_processors.device_info',
     )
 
 Run syncdb
