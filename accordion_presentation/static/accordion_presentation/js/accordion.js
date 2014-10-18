@@ -7,7 +7,13 @@ function get_proportion(real_size, proportion){
 
 function resize_image_max_width(element, height, width, maxCol){
 	$(element).removeClass('ap_height');
-	$(element).addClass('ap_width');
+	$(element).removeClass('ap_height_min');
+	if(width<700){
+			$(element).addClass('ap_width_min');
+	}else{
+	$(element).addClass('ap_width');		
+	}
+
 	switch_acordion = true;
 	var colS = (width - 10) / (maxCol+4);
 	
@@ -25,21 +31,26 @@ function resize_image_max_width(element, height, width, maxCol){
 }
 
 function resize_image_max_height(element, height, width, maxCol){
+	$(element).removeClass('ap_width_min');
 	$(element).removeClass('ap_width');
-	$(element).addClass('ap_height');
+	if (width<1024){
+		$(element).addClass('ap_height_min');
+	}else{
+			$(element).addClass('ap_height');
+	}
 	$('.cycle-slideshow').insertAfter($('.ap_col_first')); 
 	switch_acordion = false;
 	
 	var colS = (width - 10) / (maxCol);
 	var p = get_proportion(height, 60);
-	$(element).find('.ap_slide').css('height', ((p/3)*2)+'px');
+	$(element).find('.ap_slide').css('height', ((p/4)*3)+'px');
 	$(element).find('.ap_img').each(function(e,i){
 		$(i).css('height', ((p/4)*2)+'px');
 		$(i).css('width', width+'px');
 	});
 	$(element).find('.ap_plug').each(function(e,i){
 		$(i).css('width', colS+'px');
-		$(i).css('height', (p/3)+'px');
+		$(i).css('height', (p/4)+'px');
 	});	
 
 }

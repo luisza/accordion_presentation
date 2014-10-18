@@ -17,7 +17,6 @@
 		    {#data-cycle-fx="scrollHorz" #}
 		    data-cycle-fx="tileBlind"
 		    data-cycle-timeout=0
-		    data-cycle-auto-height="16:9"
 		    {% if request.toolbar.edit_mode %}
 		    data-cycle-slides="> div"
 		    {%else%}
@@ -52,6 +51,7 @@ resize_image($('.ap_content')[0]);
 $( window ).resize(function() {
 	resize_image($('.ap_content')[0]);
 });
+
 </script>
 {%endaddtoblock%}
 {%addtoblock "css" %} 
