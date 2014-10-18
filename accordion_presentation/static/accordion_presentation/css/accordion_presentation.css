@@ -6,7 +6,7 @@
   -o-transform:rotate(270deg); /* Opera */	
    margin-top: 75%;
   color: #FFFFFF;
-  font-size:30px;
+  font-size: 165%;
   /*height: 90px; */
 
 }
@@ -18,6 +18,27 @@
     overflow: hidden;
     height: 130px;
 }
+
+.ap_width_min .ap_title{
+  -ms-transform:rotate(270deg); /* IE 9 */
+  -moz-transform:rotate(270deg); /* Firefox */
+  -webkit-transform:rotate(270deg); /* Safari and Chrome */
+  -o-transform:rotate(270deg); /* Opera */	
+   margin-top: 75%;
+  color: #FFFFFF;
+  font-size: 86%;
+  /*height: 90px; */
+
+}
+
+.ap_width_min .ap_icon {
+    margin: 10% 0;
+    max-height: 30%;
+    text-align: center;
+    overflow: hidden;
+    height: 130px;
+}
+
 .ap_height .ap_title{
     color: #FFFFFF;
     float: left;
@@ -29,6 +50,25 @@
 .ap_height .ap_icon {
     overflow: hidden;
     text-align: center;
+}
+
+
+.ap_height_min .ap_title{
+    color: #FFFFFF;
+    display: block;
+    font-size: 1em;
+    margin: 2% 3%;
+    text-align: center;
+
+}
+
+.ap_height_min .ap_icon {
+    display: block;
+    overflow: hidden !important;
+    text-align: center;
+}
+.ap_height_min .ap_plug {
+	display: table-cell;
 }
 
 .no_pad{
@@ -53,14 +93,26 @@
 	float:left;
 }
 
-.ap_height .ap_plug{
-	display: table-cell;
-}
-
 .ap_width  .ap_slide{
 	float:left;
 }
 
+.ap_width_min .ap_plug{
+	float:left;
+}
+
+.ap_width_min  .ap_slide{
+	float:left;
+}
+
+.ap_height .ap_plug{
+	display: table-cell;
+}
+
+
+
 .ap_height  .ap_slide{
 	float:table-cell;
 }
+
+
