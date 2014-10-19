@@ -29,7 +29,16 @@
 
 {%addtoblock "js" %}
 <script>
-$('#ins_{{ instance.pk}}').closest('.column').css({'padding': '0px', 'background-color': '{{instance.color}}'});
+$(window).load(function() {
+	var c = $('#ins_{{ instance.pk}}').closest('.clearfix');
+	$('#ins_{{ instance.pk}}').closest('.column').css({padding: '0px'});
+	$('#ins_{{ instance.pk}}').closest('.column').css({height: c.height()}); 
+});
 
+$(window).on('resize',function() {
+	var c = $('#ins_{{ instance.pk}}').closest('.clearfix');
+	$('#ins_{{ instance.pk}}').closest('.column').css({padding: '0px'});
+	$('#ins_{{ instance.pk}}').css({height: c.height()}); 
+});
 </script>
 {%endaddtoblock "js" %}
