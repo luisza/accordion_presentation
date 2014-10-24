@@ -63,11 +63,18 @@
 }
 
 @media only screen 
-and (max-device-width: 600px) {
+and (max-width: 600px) {
 	.ap_height_min .ap_title{
 		font-size: 0.5em;
 	}
 }
+@media only screen 
+and (max-height: 350px) {
+	.ap_width .ap_title{
+		font-size: 0.7em;
+	}
+}
+
 .ap_height_min .ap_icon {
     display: block;
     overflow: hidden !important;
@@ -83,6 +90,16 @@ and (max-device-width: 600px) {
 }
 
 
+@media only screen 
+and (max-width: 320px) {
+	.ap_width_min .ap_title {
+    color: #ffffff;
+    font-size: 60%;
+    margin-top: 110%;
+    transform: rotate(270deg);
+	}
+
+}
 
 .ap_presentation {
 
