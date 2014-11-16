@@ -1,5 +1,5 @@
 switch_acordion =true;
-
+$=($ || CMS.$);
 function get_proportion(real_size, proportion){
 	return parseInt(real_size*proportion/100);
 }
@@ -17,7 +17,7 @@ function resize_image_max_width(element, height, width, maxCol){
 	switch_acordion = true;
 	var colS = (width - 10) / (maxCol+4);
 	
-	var c = get_proportion(height, 60);
+	var c = get_proportion(height, 100);
 	$(element).find('.ap_slide').css('width', (colS*4)+'px');
 	$(element).find('.ap_img').each(function(e,i){
 		$(i).css('width', (colS*4)+'px');
@@ -56,8 +56,9 @@ function resize_image_max_height(element, height, width, maxCol){
 }
 
 function resize_image(element){
-	var height = $(window).height();
-	var width = $(window).width();
+		
+	var height =  $(element).height() || $(window).height();
+	var width = $(element).width() || $(window).width();
 	var maxCol = $(element).data( "maxcol");
 
 	if(height > width){
@@ -65,5 +66,10 @@ function resize_image(element){
 	}else{
 		resize_image_max_width(element, height, width, maxCol);
 	}
-
+	
+	$('.cycle-overlay').each(function(e,i){
+		$(i).css('width', $(i).parent().width()-30);
+	});
 }
+
+

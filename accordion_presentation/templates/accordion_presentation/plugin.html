@@ -4,18 +4,24 @@
 {% if step == 1%}
 <a href="{%if instance.page_link%}{{instance.page_link.get_absolute_url}} {%else%}#{%endif%}">
  <img class="ap_img" src="{{instance.photo.url}}"  />	
+ {%if instance.short_description %}
+ <div class="cycle-overlay">{{instance.short_description }}</div>
+ {%endif%}
 </a>
+
 {%else%}
 
  <div class="grid_1 borde_w ap_plug 
  {%if forloop.last%} ap_col_last {%endif%}
  {%if forloop.last%} ap_col_first{%endif%}" id="m_{{instance.pk}}"  style="background-color: {{instance.color}};">
  	
- 	<div class=" ap_icon">
+ 	<div class="ap_icon" >
  		<img src="{{instance.icon.url}}" >
  	</div>
-	<h3 class="ap_title"> {{instance.title}} </h3>
-
+ 	<div class="ap_divtitle" style="display: inline-block">
+ 	<h3 class="ap_title"> {{instance.title}} </h3>	
+ 	</div>
+ 	
 </div>
 
 {%addtoblock "js" %} <script>

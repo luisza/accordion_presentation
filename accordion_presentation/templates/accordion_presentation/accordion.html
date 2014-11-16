@@ -1,8 +1,8 @@
 {% load i18n static cms_tags menu_tags sekizai_tags  %}
 
-{% if not request.toolbar.edit_mode %}
-	{%addtoblock "js" %} <script src="{% static 'cms/js/libs/jquery.min.js' %}"> </script> {%endaddtoblock%}
-{%endif%}
+
+{%addtoblock "js" %} <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"> </script> {%endaddtoblock%}
+
 
 {%addtoblock "js" %} <script src="{% static 'accordion_presentation/js/jquery.cycle2.min.js' %}"> </script> {%endaddtoblock%}
 
@@ -14,8 +14,7 @@
 <div class="ap_content {{accordion.custom_classes}}" data-maxcol="{{ accordion.child_plugin_instances|length }}" >
 
 		<div class="cycle-slideshow ap_slide"  
-		    {#data-cycle-fx="scrollHorz" #}
-		    data-cycle-fx="tileBlind"
+		    data-cycle-fx="{{accordion.cycle_fx}}"
 		    data-cycle-timeout=0
 		    {% if request.toolbar.edit_mode %}
 		    data-cycle-slides="> div"
@@ -47,13 +46,33 @@
 {%addtoblock "js" %} 
 <script>
 
-resize_image($('.ap_content')[0]);
-$( window ).resize(function() {
+resize_image(  ($ || CMS.$)('.ap_content')[0]);
+
+
+($ || CMS.$)( window ).resize(function() {
 	resize_image($('.ap_content')[0]);
 });
 
 </script>
+{%endaddtoblock%}  
+{%addtoblock "css" %}
+<style>
+	{% if accordion.background_color %}
+		body{background: {{accordion.background_color}};}
+	{%endif%}
+	
+	{% if accordion.custom_height or accordion.custom_width %}
+	  .ap_content{
+		{%if accordion.custom_height %}
+			height:{{accordion.custom_height}}%;
+		{%endif%}
+		{%if accordion.custom_width %}
+			width:{{accordion.custom_width}}%;
+		{%endif%}
+	  }
+	{%endif%}
+</style>
 {%endaddtoblock%}
-{%addtoblock "css" %} 
-	<style>body{background: #000000;}</style>
-{%endaddtoblock%}
+
+
+

@@ -7,7 +7,6 @@
    margin-top: 75%;
   color: #FFFFFF;
   font-size: 165%;
-  /*height: 90px; */
 
 }
 
@@ -31,14 +30,15 @@
 
 }
 
-.ap_width_min .ap_icon {
-    margin: 10% 0;
-    max-height: 30%;
-    text-align: center;
-    overflow: hidden;
-    height: 130px;
-}
 
+.ap_width .ap_icon {
+    height: 130px;
+    margin: 10% 20%;
+    max-height: 150px;
+    max-width: 150px;
+    overflow: hidden;
+    text-align: center;
+}
 .ap_height .ap_title{
     color: #FFFFFF;
     float: left;
@@ -97,6 +97,8 @@ and (max-width: 320px) {
     font-size: 60%;
     margin-top: 110%;
     transform: rotate(270deg);
+    transform-origin: 0 0;
+   -webkit-transform-origin:0 0 ;
 	}
 
 }
@@ -104,11 +106,6 @@ and (max-width: 320px) {
 .ap_presentation {
 
 	display: inline-block;
-}
-
-.ap_content {
- 	background-color: #000;
- 	height: 90%;
 }
 
 
@@ -139,3 +136,33 @@ and (max-width: 320px) {
 }
 
 
+.ap_icon > img {
+    max-height: 150px;
+    max-width: 150px;
+}
+
+@media only screen 
+and (max-height: 600px) {
+	.ap_icon > img {
+	    max-height: 50px;
+	    max-width: 50px;
+	}
+}
+
+.ap_content{
+	width: 100%;
+	height: 100%;	
+}
+
+.cycle-overlay {
+    background: none repeat scroll 0 0 black;
+    bottom: 0;
+    color: white;
+    opacity: 0.6;
+    padding: 15px;
+    position: absolute;
+}
+
+.ap_content a{
+	 text-decoration: none;
+}

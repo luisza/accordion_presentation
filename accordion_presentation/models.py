@@ -5,18 +5,44 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import python_2_unicode_compatible
 from paintstore.fields import ColorPickerField
 
+from django.conf import settings
+from django.core.checks import Error
+
 @python_2_unicode_compatible
 class PresentationAccordion(CMSPlugin):
-    custom_classes = models.CharField(_('custom classes'), max_length=200, blank=True)
-    custom_min_width = models.IntegerField(_('custom minimum width'), null=True, blank=True,
-                                           help_text=_("Size for closed accordion, if not set default is 7% of the device screen"))
-    custom_max_width = models.IntegerField(_('custom maximum width'), null=True, blank=True,
-                                           help_text=_("Size for open accordion, if not set default is 80% of the device screen"))
+    FX = (('none', 'None'),
+          ('fade', 'Fade'),
+          ('fadeout', 'Fadeout'),
+          ('scrollHorz', 'Scroll Horizontal'),
+          ('tileBlind', 'Tile Blind'),
+          )
+    
+    custom_classes = models.CharField(_('custom classes'), max_length=200, blank=True)  
+    custom_height = models.IntegerField(_('custom height porcentaje'), null=True, blank=True,
+                                        help_text=_("It is a number between 0 and 100"))
+    custom_width = models.IntegerField(_('custom width porcentaje'), null=True, blank=True,
+                                       help_text=_("It is a number between 0 and 100"))
     custom_duration = models.IntegerField(_('custom duration in milliseconds'), null=True, blank=True,
-                                           help_text=_("Jquery Animation duration in milliseconds, if not set default is 300"))
+                                           help_text=_("Jquery Animation duration in milliseconds,ignore if not set"))
+    background_color = ColorPickerField(null=True, blank=True)
+    
+    cycle_fx = models.CharField(_('Type of transition'), max_length=200, choices=FX, default="none")  
     
     def __str__(self):
         return _("%s columns") % self.cmsplugin_set.all().count()
+    
+    @classmethod
+    def check(cls, **kwargs):
+        errors = super(PresentationAccordion, cls).check(**kwargs)
+        if not 'paintstore' in settings.INSTALLED_APPS:
+            errors.append( Error(
+                                'No paintstore in  INSTALLED_APPS ',
+                                hint=None,
+                                obj=None,
+                                id='accordion_presentation.E001',
+                              )
+        )
+        return errors
 
 @python_2_unicode_compatible
 class PresentationModel(CMSPlugin):
