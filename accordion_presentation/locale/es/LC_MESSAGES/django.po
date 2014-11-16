@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-23 22:39-0600\n"
+"POT-Creation-Date: 2014-11-16 19:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Last-Translator: Luis Zárate <luis.zarate@solvosoft.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -34,54 +34,71 @@ msgstr "Campo en el accordión"
 msgid "Full color column"
 msgstr "Columna a todo color"
 
-#: models.py:10
+#: models.py:20
 msgid "custom classes"
 msgstr "Clases personalizadas"
 
-#: models.py:11
-msgid "custom minimum width"
-msgstr "Minimo width personalizado"
+#: models.py:21
+msgid "custom height porcentaje"
+msgstr "Porcentaje manual de altura"
 
-#: models.py:12
-#, python-format
-msgid ""
-"Size for closed accordion, if not set default is 7% of the device screen"
-msgstr "Tamaño cuando el accordión está cerrado, por defecto es 7% del tamaño del dispositivo"
+#: models.py:22 models.py:24
+msgid "It is a number between 0 and 100"
+msgstr "Es un número de 0 a 100"
 
-#: models.py:13
-msgid "custom maximum width"
-msgstr "Maximo width personalizado"
+#: models.py:23
+msgid "custom width porcentaje"
+msgstr "Porcentaje manual de anchura"
 
-#: models.py:14
-#, python-format
-msgid "Size for open accordion, if not set default is 80% of the device screen"
-msgstr "Tamaño del accordión cuando está abierto, por defecto es el 80% del tamaño del dispositivo"
-
-#: models.py:15
+#: models.py:25
 msgid "custom duration in milliseconds"
 msgstr "Duración personalizada en milisegundos"
 
-#: models.py:16
-msgid "Jquery Animation duration in milliseconds, if not set default is 300"
+#: models.py:26
+#, fuzzy
+#| msgid "Jquery Animation duration in milliseconds, if not set default is 300"
+msgid "Jquery Animation duration in milliseconds,ignore if not set"
 msgstr "DUración de la animación en milisegundos, por defecto 300"
 
-#: models.py:19
+#: models.py:29
+msgid "Type of transition"
+msgstr "Tipo de transición"
+
+#: models.py:32
 #, python-format
 msgid "%s columns"
 msgstr "%s columnas"
 
-#: models.py:32
+#: models.py:58
 msgid "page"
 msgstr "Página"
 
-#: models.py:33
+#: models.py:59
 msgid "If present image will be clickable"
 msgstr "Si está presente la imágen será clickeable"
 
-#: models.py:47
+#: models.py:73
 msgid "Vertical"
 msgstr "Vertical"
 
-#: models.py:47
+#: models.py:73
 msgid "Horizontal"
 msgstr "Horizontal"
+
+#~ msgid "custom minimum width"
+#~ msgstr "Minimo width personalizado"
+
+#~ msgid ""
+#~ "Size for closed accordion, if not set default is 7% of the device screen"
+#~ msgstr ""
+#~ "Tamaño cuando el accordión está cerrado, por defecto es 7% del tamaño del "
+#~ "dispositivo"
+
+#~ msgid "custom maximum width"
+#~ msgstr "Maximo width personalizado"
+
+#~ msgid ""
+#~ "Size for open accordion, if not set default is 80% of the device screen"
+#~ msgstr ""
+#~ "Tamaño del accordión cuando está abierto, por defecto es el 80% del "
+#~ "tamaño del dispositivo"
